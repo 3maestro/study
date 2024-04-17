@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="Generator" content="EditPlus®">
+		<meta name="Author" content="">
+		<meta name="Keywords" content="">
+		<meta name="Description" content="">
+		<title>Document</title>
+
+		<style>
+			pre {white-space:pre-line;}
+            ul {padding-left: 20px;}
+            ol {padding-left: 20px;}
+		</style>
+	</head>
+	<body>
+		<div style="padding: 20px;">
+			<h3>먼저 본질을 이해하고 시작하자.</h3>
+			<p>
+				새로운 기술을 다룰 때 중요한 것은 그 본질을 제대로 파악하는 것이다. 
+				표면적인 노하우만을 습득하는 것만으로는 다양한 환경에서 응용하기 어렵고, 기억할 것들이 너무 많아져 금방 잃어 버리게 된다. 
+				또한 이런 단순한 지식들은 새로운 기술이 등장해 버리면 금방 사라지고 그 가치를 잃어버리는 경우가 많다.
+			</p>
+			<hr/>
+            <ul>
+                <li>목록</li>
+                <ol>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./security.html">Security</a></li>
+					<li><a href="./docker.html">Docker</a></li>
+					<li><a href="./kubernetes.html">Kubernetes</a></li>
+					<li><a href="./linux.html">Linux</a></li>
+                    <li><a href="./language.html">Language</a></li>
+					<li><a href="./webserver.html">Web Server</a></li>
+					<li><a href="./was.html">Was</a></li>
+					<li><a href="./git.html">Git</a></li>
+					<li><a href="./network.html">Network</a></li>
+                </ol>
+            </ul>
+			<hr/>
+			
+			<ul>
+                <li>목록</li>
+                <ol>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./security.html">Security</a></li>
+					<li><a href="./docker.html">Docker</a></li>
+					<li><a href="./kubernetes.html">Kubernetes</a></li>
+					<li><a href="./linux.html">Linux</a></li>
+                    <li><a href="./language.html">Language</a></li>
+					<li><a href="./webserver.html">Web Server</a></li>
+					<li><a href="./was.html">Was</a></li>
+					<li><a href="./git.html">Git</a></li>
+                </ol>
+            </ul>
+			<hr/>
+            
+			<pre>
+				<h4>명령어</h4>
+				
+				디렉토리 소유주 변경
+				chown : change own 소유를 변경합니다.
+				# 사용자별로 권한주기
+				chown [사용자명] [파일명]
+				chown [사용자명] [디렉토리]
+				# 디렉토리의 하위 디렉토리까지 변경
+				chown [사용자명] -R [디렉토리]
+				
+				# 그룹별로 권한주기
+				chown :[그룹명] [파일명]
+				chown :[그룹명] [디렉토리]
+				chown :[그룹명] -R [디렉토리]
+				
+				# 사용자, 그룹별 권한주기
+				chown [사용자명]:[그룹명]
+				chown [사용자명]:[그룹명] [파일명]
+				chown [사용자명]:[그룹명] [디렉토리]
+				chown [사용자명]:[그룹명] -R [디렉토리]
+
+				centos 방화벽 설정
+				7버전 이상 -> firewall 사용
+				기존 iptables 없어짐 (config 모두 주석처리)
+
+				netstat =antp
+
+				LISTEN 목록 확인
+				netstat -antp | grep LISTEN
+
+				zone 목록확인
+				# firewall-cmd --get-zones
+
+				default zone 목록확인
+				# firewall-cmd --get-default-zone
+
+				zone 상세목록확인
+				$ firewall-cmd --list-all-zones
+
+				영구적(--permanent)으로  zone 생성
+				$ firewall-cmd --permanent --new-zone=[zone이름]
+
+				영구적(--permanent)으로  zone 삭제
+				$ firewall-cmd --permanent --delete-zone=[zone이름]
+
+				영구적(--permanent)으로  zone에 포트 생성
+				$ firewall-cmd --permanent --zone=[zone이름] --add-port=[포트]-[포트]/tcp
+
+				영구적(--permanent)으로  zone에 포트 삭제
+				$ firewall-cmd --permanent --zone=[zone이름] --remove-port=[포트]/tcp
+
+				사용가능한 서비스 목록
+				firewall-cmd --get-services
+
+				영구적(--permanent)으로  zone에 서비스 생성
+				$ firewall-cmd --permanent --zone=[zone이름] --add-service=[서비스명]
+
+				영구적(--permanent)으로  zone에 서비스 삭제
+				$ firewall-cmd --permanent --zone=[zone이름] --remove-service=[서비스명]
+
+				firewall 재시작 및 저장
+				$ firewall-cmd --reload
+
+				기본 zone inernal 로 변경
+				sudo firewall-cmd --set-default-zone=internal
+
+				특정디렉토리 검색
+				find / -type d -name "tomcat"
+				
+			</pre>
+
+			<ul>
+				<li>TODO</li>
+				<pre>
+					ubuntu tar 옵션
+					tar는 파일을 아카이브하고 압축하는 데 사용되는 유닉스 명령어입니다. 
+					다양한 옵션을 사용하여 압축, 해제, 파일 및 디렉토리를 추가하고 제거하는 등의 작업을 수행할 수 있습니다. 
+					여기에는 몇 가지 주요 옵션이 있습니다:
+	
+					-c, --create: 새로운 아카이브를 만듭니다.
+					-x, --extract, --get: 아카이브를 해제합니다.
+					-f, --file=아카이브파일: 아카이브 파일의 이름을 지정합니다.
+					-v, --verbose: 자세한 출력을 표시합니다.
+					-z, --gzip: gzip으로 압축된 아카이브를 만들거나 해제합니다.
+					-j, --bzip2: bzip2로 압축된 아카이브를 만들거나 해제합니다.
+					-t, --list: 아카이브에 포함된 파일 목록을 표시합니다.
+					-C, --directory=경로: 파일을 특정 디렉토리로 압축하거나 특정 디렉토리에 해제합니다.
+	
+	
+					ubuntu wget 옵션 설명
+					wget은 웹 서버로부터 파일을 다운로드하는 데 사용되는 명령 줄 도구입니다. 
+					다양한 옵션을 사용하여 다운로드할 파일의 속성을 제어할 수 있습니다. 여기에는 주요 옵션 몇 가지가 있습니다:
+	
+					-O, --output-document=파일명: 다운로드한 파일의 이름을 지정합니다.
+					-q, --quiet: 조용한 모드로 실행하여 출력을 최소화합니다.
+					-P, --directory-prefix=저장경로: 파일을 저장할 디렉토리를 지정합니다.
+					-c, --continue: 이전 다운로드가 중단된 경우 중단된 부분부터 다시 다운로드합니다.
+					-b, --background: 다운로드를 백그라운드에서 실행합니다.
+					-r, --recursive: 재귀적으로 파일을 다운로드합니다. 주로 디렉토리 전체를 다운로드할 때 사용됩니다.
+					-N, --timestamping: 로컬 파일보다 새로운 파일만 다운로드합니다.
+					이 외에도 wget에는 많은 다른 옵션이 있습니다. man wget 명령을 실행하여 wget의 매뉴얼 페이지를 확인하면 모든 옵션과 사용법을 자세히 알아볼 수 있습니다.
+				</pre>
+			</ul>
+		</div>
+	</body>
+</html>

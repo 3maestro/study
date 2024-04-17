@@ -40,56 +40,30 @@
                 </ol>
             </ul>
 			<hr/>
-
-			<h4>TODO 정리필요</h4>
-			<pre>
-				하나의 이미지로 여러개의 컨테이너를 찍어낸다
-
-				ex)
-				tomcat 8.5.100 	-> con01
-						-> con02
-						-> con03
-				marieaDB 	-> condb01
-						-> condb02
-				app		-> conapp01
-						-> conapp02
-						-> conapp03
-				
-				
-				[con01, condb01, conapp03]
-				[con01, condb02, conapp02]
-				[con02, condb02, conapp02]
-				[con03, condb01, conapp01]
-				
-				centos + tomcat + app(MagicLine4Web)
-				
-				vim 설치
-				$ apt-get update
-				$ apt-get install vim
-				
-				docker run \
-				-i -t \
-				--privileged=true \
-				--name myCentOS7 \
-				-v /Users/folaflor/myCentOS7home:/home \
-				-p 44983:22 \
-				centos:centos7
-				view rawdocker_centos7.sh hosted with ❤ by GitHub
-				
-				옵션 설명
-
-				-i -t : 상호 입출력. 터미널 사용을 위한 옵션.
-
-				--privileged=true : 높은 권한으로 컨테이너 실행. ssh 외부 접속 설정을 위해서는 높은 권한 실행이 필요.
-
-				--name myCentOS7 : 컨테이너 이름. 변경, 생략 가능.
-
-				-v /Users/folaflor/myCentOS7home:/home : 공유할 볼륨 경로. : 기준으로 앞이 로컬 볼륨 경로, 뒤가 컨테이너 내부 경로. 변경/생략 가능.
-
-				-p 44983:22 : 개방 포트 설정. 외부에서 44983 포트로 접근하면 컨테이너의 22번 포트로 연결 (ssh 포트: 22). 변경, 생략 가능.
-
-				centos:centos7 : 컨테이너의 베이스 이미지 이름. 다른 리눅스 이미지를 원할 경우 교체. 
+			
+            <pre>
+				서블릿 - JAVA - Spring 호환 버전
+				Serverlet 4.0 - Java EE8 - Java SE8 - Spring Framework 5.0.x or 5.1.x
+				Serverlet 3.1 - Java EE7 - Java SE7 - Spring Framework 4.0.x or 4.1.x
+				Serverlet 3.0 - Java EE6 - Java SE6 - Spring Framework 3.0.x or 3.1.x
 			</pre>
+			<ul>
+                <li>목록</li>
+                <ol>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./security.html">Security</a></li>
+					<li><a href="./docker.html">Docker</a></li>
+					<li><a href="./kubernetes.html">Kubernetes</a></li>
+					<li><a href="./linux.html">Linux</a></li>
+                    <li><a href="./language.html">Language</a></li>
+					<li><a href="./webserver.html">Web Server</a></li>
+					<li><a href="./was.html">Was</a></li>
+					<li><a href="./git.html">Git</a></li>
+                </ol>
+            </ul>
+			<hr/>
+
+			
 		</div>
 	</body>
 </html>
