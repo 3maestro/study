@@ -14,6 +14,19 @@
             ul {padding-left: 20px;}
             ol {padding-left: 20px;}
 		</style>
+
+		<script src="./js/zte.js"></script>
+		<script>
+			window.onload = function() {
+				console.log("window onload!");
+				console.log(config.t(20));
+				config.val.obj.total = config.val.obj.dit(7);
+				var temp = config.t(20);
+				var result = config.val.obj.total
+				console.log(config.val.obj.total);
+				console.log(result * temp);
+			}
+		</script>
 	</head>
 	<body>
 		<div style="padding: 20px;">
@@ -35,14 +48,84 @@
                     <li><a href="./language.html">Language</a></li>
 					<li><a href="./webserver.html">Web Server</a></li>
 					<li><a href="./was.html">Was</a></li>
+					<li><a href="./db.html">Database</a></li>
 					<li><a href="./git.html">Git</a></li>
 					<li><a href="./network.html">Network</a></li>
+					<li><a href="./sign.html">Sign</a></li>
                 </ol>
             </ul>
 			<hr/>
 
 			<h4>TODO 정리필요</h4>
+			<h4>드림시큐리티 솔루션</h4>
+			<ol>
+				<li>MagicLine4Web</li>
+				<ol type="I">
+					<li>설명</li>
+					<li>개발환경</li>
+					<!-- <li>ERROR CASE</li>
+					<ol type="A">
+						<li>실행파일</li>
+						<ol type="a">
+							<li>
+								이슈 : 인증서 로그인시 설치파일(.exe)은 설치가 됐는데 작동을 안함 </br>
+								해결 : 실행파일을 바로가기 만든 후 시작프로그램에 등록
+							</li>
+							<li>
+								이슈 : 인증서 로그인시 설치파일(.exe)은 설치가 됐는데 작동을 안함 </br>
+								해결 : 실행파일을 바로가기 만든 후 시작프로그램에 등록
+							</li>
+						</ol>
+						<li>비밀번호</li>
+						<ol type="a">
+							<li>
+								이슈 : 비밀번호 불일치 </br>
+								해결 : 
+							</li>
+
+						</ol>
+					</ol> -->
+					<li>설치방법</li>
+					<li>접속정보</li>
+					<li>명령어</li>
+				</ol>
+				<li>MagicMRS</li>
+				<ol type="I">
+					<li>설명</li>
+					<li>개발환경</li>
+					<li>설치방법</li>
+				</ol>
+				<li>MagicXMLSecurity</li>
+				<ol type="I">
+					<li>설명</li>
+					<li>개발환경</li>
+					<li>설치방법</li>
+				</ol>
+				<li>MagicHUB</li>
+				<li>MagicFIDO</li>
+				<li>MagicXsign</li>
+				<li>MagicSSO</li>
+			</ol>
+
 			<pre>
+
+				드림시큐리티 솔루션
+				Magicline Hub
+                admin페이지 접속 정보
+                http://localhost:9000/MagicLineHubAdmin-1.0.0/
+                admin / amin
+
+				DBMS 접속정보
+				root / mariadb
+
+				Server : mariadb
+				Host: localhost
+				port : 3306
+				db : magiclinehub
+				id : magiclinehub
+				pw : magiclinehub
+
+
 				하나의 이미지로 여러개의 컨테이너를 찍어낸다
 
 				ex)
@@ -93,3 +176,4 @@
 		</div>
 	</body>
 </html>
+

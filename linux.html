@@ -35,31 +35,34 @@
                     <li><a href="./language.html">Language</a></li>
 					<li><a href="./webserver.html">Web Server</a></li>
 					<li><a href="./was.html">Was</a></li>
+					<li><a href="./db.html">Database</a></li>
 					<li><a href="./git.html">Git</a></li>
 					<li><a href="./network.html">Network</a></li>
+					<li><a href="./sign.html">Sign</a></li>
                 </ol>
             </ul>
 			<hr/>
 			
-			<ul>
-                <li>목록</li>
-                <ol>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./security.html">Security</a></li>
-					<li><a href="./docker.html">Docker</a></li>
-					<li><a href="./kubernetes.html">Kubernetes</a></li>
-					<li><a href="./linux.html">Linux</a></li>
-                    <li><a href="./language.html">Language</a></li>
-					<li><a href="./webserver.html">Web Server</a></li>
-					<li><a href="./was.html">Was</a></li>
-					<li><a href="./git.html">Git</a></li>
-                </ol>
-            </ul>
-			<hr/>
-            
 			<pre>
 				<h4>명령어</h4>
+				로컬에서 원격으로 파일 전송
+				scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로]
+				원격에서 로컬로 파일 전송
+				scp [유저명]@[IP주소]:[전송할 파일 경로] [받을 경로]
+				로컬에서 원격으로 파일 여러개 전송
+				scp [옵션] [파일명1] [파일명2] [유저명]@[IP주소]:[받을 경로]
+				option 
+				-r: 폴더를 복사할 때 사용(전송 대상을 폴더로 지정). 모든 폴더들을 재귀적으로 복사함.
+				-P: ssh 포트 지정
+				-i: identity file을 지정해서 사용(identity file 경로를 지정)
+				> ex) scp -i ~/.ssh/dhj-server-private ~/example.txt dhj@141.223.xx.xxx:/home/test
+				-v: 상세내용을 보면서 디버깅 할 때 사용(verbose 모드)
+				-p: 전송 시 파일 수정 시간과 권한을 유지
 				
+
+				root 권한을 가지고 실행하는 것은 권장되지 않으므로, 사용자를 docker group에 포함시켜주면 된다. ($USER 환경 변수는 현재 로그인한 사용자 아이디를 나타내므로 그대로 입력하면 된다.)
+				sudo usermod -a -G docker $USER
+
 				디렉토리 소유주 변경
 				chown : change own 소유를 변경합니다.
 				# 사용자별로 권한주기
@@ -78,6 +81,145 @@
 				chown [사용자명]:[그룹명] [파일명]
 				chown [사용자명]:[그룹명] [디렉토리]
 				chown [사용자명]:[그룹명] -R [디렉토리]
+
+				<pre>
+					TODO 정리필요
+					우분투 버전 표시
+					lsb_release -a
+
+					root 비밀번호 설정
+					sudo passwd root 
+
+					local linux to linux
+					scp [전송할 파일 경로] [유저명]@[IP주소]:[받을 경로]
+					
+					ssh 22 port open whit iptables	
+					sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+
+					ssh 설치 
+					sudo apt install openssh-server
+
+					ssh 설치여부 확인
+					systemctl status sshd
+				</pre>
+
+				<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<p><span style="color: rgb(255, 0, 0);"><span style="color: rgb(0, 0, 0);">d</span>rwxr-xr-x</span>&nbsp; <span style="color: rgb(255, 108, 0);">2</span>&nbsp;&nbsp;<span style="color: rgb(255, 239, 0);">root</span>&nbsp;&nbsp;<span style="color: rgb(0, 158, 37);">root&nbsp;</span>&nbsp;<span style="color: rgb(0, 117, 200);">4096</span> <span style="color: rgb(58, 50, 195);">Apr 22 16:59</span> <span style="color: rgb(120, 32, 185);">conory</span></p>
+					<div><span style="color: rgb(255, 0, 0);"><span style="color: rgb(0, 0, 0);">파일Type</span> 퍼미션정보</span> <span style="color: rgb(255, 108, 0);">링크수</span> <span style="color: rgb(255, 239, 0);">소유자</span> <span style="color: rgb(0, 158, 37);">소유그룹</span> <span style="color: rgb(0, 117, 200);">용량</span> <span style="color: rgb(58, 50, 195);">생성날짜</span> <span style="color: rgb(120, 32, 185);">파일이름</span></div>
+					</blockquote>
+					<div>
+					<ul>
+					<li>파일 Type : <span style="background-color: rgb(228, 255, 117); color: rgb(0, 0, 0);">&quot;<b>d</b>&quot; -&gt; 디렉토리 , &quot;<b>l</b>&quot; -&gt; 링크파일 , &quot;<b>-</b>&quot; -&gt; 일반파일 등등..</span></li>
+					<li><span style="color: rgb(255, 0, 0);">퍼미션정보</span> : 해당 파일에 어떠한 퍼미션이 부여되어있는 지 표시!</li>
+					<li><span style="color: rgb(255, 108, 0);">링크수</span> : 해당 파일이 링크된 수! 링크는 윈도우의 &quot;바로가기&quot;와 같습니다. &quot;<b>in [대상파일] [링크파일]</b>&quot; 명령으로 링크파일을 만듭니다.</li>
+					<li><span style="color: rgb(255, 239, 0);">소유자</span> : 해당 파일의 소유자이름! (누구껀지?)</li>
+					<li><span style="color: rgb(0, 158, 37);">소유그룹</span> : 해당 파일을 소유한 그룹이름! 특별한 변경이 없을 경우 소유자가 속한 그룹이 소유그룹으로 지정됩니다.</li>
+					<li><span style="color: rgb(0, 117, 200);">용량</span> : 파일의 용량!</li>
+					<li><span style="color: rgb(58, 50, 195);">생성날짜</span> : 파일이 생성된 날짜!&nbsp;</li>
+					<li><span style="color: rgb(120, 32, 185);">파일이름</span> : 파일이름이죠!</li>
+					</ul>
+					</div>
+					<div>&nbsp;</div>
+					<div>이제 퍼미션정보를 봐야겠지요.. 윗부분에서 보셔서 아시겠지만, 앞에서 두번째부터 아홉번째까지가 바로 퍼미션정보입니다.</div>
+					<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<div><span style="background-color: rgb(0, 0, 255); color: rgb(255, 255, 255);">rwxr-xr-x</span></div>
+					</blockquote>
+					<div><i>&quot;근데 이게 퍼미션 정보라고요??.. 와이리 못생겨노?&quot;</i></div>
+					<div>&nbsp;</div>
+					<div>일단은 알아두어야 할게 있는 데요.. 퍼미션 종류에는 3가지가 있습니다.. 그리고 퍼미션의 사용자 지정에도 3가지가 구요..</div>
+					<div>&nbsp;</div>
+					<div><b>* 퍼미션 종류 , <span style="background-color: rgb(255, 0, 0); color: rgb(255, 255, 255);">() 괄호에 있는 것이 해당 퍼미션 기호</span></b></div>
+					<div>
+					<ul>
+					<li><span style="line-height: 1.5;">읽기 <span style="color: rgb(0, 0, 0); background-color: rgb(255, 218, 237);">( r )</span> : 파일의 읽기권한</span></li>
+					<li><span style="line-height: 1.5;">쓰기 <span style="background-color: rgb(255, 218, 237); color: rgb(0, 0, 0);">( w )</span> : 파일의 쓰기권한</span></li>
+					<li><span style="line-height: 1.5;">실행 <span style="background-color: rgb(255, 218, 237); color: rgb(0, 0, 0);">( x )</span> : 파일의 실행권한</span></li>
+					</ul>
+					</div>
+					<div>&nbsp;</div>
+					<div><b>* 퍼미션의 사용자지정</b></div>
+					<div>
+					<ul>
+					<li><span style="line-height: 1.5;">소유자 : 소유자에 대한 퍼미션지정</span></li>
+					<li><span style="line-height: 1.5;">그룹 : 소유그룹에 대한 퍼미션지정</span></li>
+					<li><span style="line-height: 1.5;">공개 : 모든사용자들에 대한 퍼미션지정</span></li>
+					</ul>
+					</div>
+					<div>&nbsp;</div>
+					<div>그럼 퍼미션 정보를 볼까요?</div>
+					<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<div><span style="color: rgb(255, 255, 255); background-color: rgb(0, 0, 255);">rwxr-xr-x</span></div>
+					</blockquote>
+					<div>&nbsp;</div>
+					<div>&quot;<i>r &nbsp;w &nbsp;x가 왠지 낮익어요..</i>&quot; 하는 분 계신가요??&nbsp;</div>
+					<div>네.. 맞아요.. 위에서 봤던 퍼미션 기호이지요..</div>
+					<div>&nbsp;</div>
+					<div><i>그런데 기호의 종류는 ( r &nbsp;w &nbsp;x ) &nbsp;3개인데.. 퍼미션정보에는 총9개가 표시되네요.. 뭔지?</i></div>
+					<div>일단 세자리씩 끊어봅시다.. ( rwx &nbsp;r-x &nbsp;r-x ) 이제 감이오나요?</div>
+					<div>바로!! <span style="background-color: rgb(0, 153, 153); color: rgb(255, 255, 255);">&quot;<b>소유자 : </b>rwx , <b>그룹 : </b>r-x , <b>공개 : </b>r-x&quot;&nbsp;</span><span style="line-height: 1.5;">&nbsp;이런 얘기지요.. ㅎㅎ (이때 <span style="background-color: rgb(147, 52, 216); color: rgb(255, 255, 255);">&#39;-&#39;</span> 기호는 그 퍼미션은 없다는 기호입니다.)</span></div>
+					<div><span style="line-height: 1.5;">해석해보면 &quot; <span style="background-color: rgb(255, 102, 0); color: rgb(255, 255, 255);">이 파일에 대해서 소유자는 읽기(r),쓰기(w),실행(x)을 허용하고,&nbsp;</span></span></div>
+					<div><span style="line-height: 1.5; background-color: rgb(255, 102, 0); color: rgb(255, 255, 255);">파일의 소유그룹에 속하고 있는 사용자들은 읽기(r),실행(x)만 허용하고,</span></div>
+					<div><span style="line-height: 1.5; background-color: rgb(255, 102, 0); color: rgb(255, 255, 255);">이외에 나머지 모든 사용자들도&nbsp;</span><span style="line-height: 1.5; background-color: rgb(255, 102, 0); color: rgb(255, 255, 255);">읽기(r),실행(x)만</span><span style="line-height: 1.5;"><span style="background-color: rgb(255, 102, 0); color: rgb(255, 255, 255);">&nbsp;허용한다.</span> &quot;</span></div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div><span style="line-height: 1.5; font-size: 14px;"><b>2) 퍼미션 변경하기</b></span></div>
+					<div><span style="line-height: 1.5;">파일이 생성될때 기본적인 퍼미션이 부여됩니다.</span></div>
+					<div><span style="line-height: 1.5;">하지만, 퍼미션을 변경하고 싶을 때가 있습니다. (가령 이 파일을 모두에게 공개한다거나 하는...)</span></div>
+					<div>&nbsp;</div>
+					<div><span style="line-height: 1.5;">퍼미션 변경에는 여러가지 방법이 있지만, 여기서는 가장 쉬운방법으로 배워보도록 합시다.</span></div>
+					<div><span style="line-height: 1.5;">바로 &quot;</span>chmod<span style="line-height: 1.5;">&quot; 명령을 사용하면 아주 손쉽게 퍼미션을 변경할 수 있습니다.</span></div>
+					<div>&nbsp;</div>
+					<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<div><span style="color: rgb(0, 158, 37);">chmod [변경될 퍼미션값] [변경할 파일]</span></div>
+					</blockquote>
+					<div>&nbsp;</div>
+					<div><span style="line-height: 1.5;">여기서&nbsp;</span>[퍼미션값]<span style="line-height: 1.5;">을 지정해 줘야하는 데요..</span></div>
+					<div><span style="line-height: 1.5;">퍼미션값을 구하는 방법은 다음과 같습니다.</span></div>
+					<div>&nbsp;</div>
+					<div>
+					<ul>
+					<li><span style="line-height: 1.5;">각 퍼미션 기호를 숫자로 변환 합니다. </span><span style="line-height: 1.5; color: rgb(255, 255, 255); background-color: rgb(255, 0, 0);">( r = 4 , w = 2 , x = 1 )</span></li>
+					</ul>
+					</div>
+					<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<div>예) r &nbsp;- &nbsp;x 인 경우 4 &nbsp;0 &nbsp;1</div>
+					</blockquote>
+					<div>&nbsp;</div>
+					<div>
+					<ul>
+					<li><span style="line-height: 1.5;">변환한 숫자를 합산합니다.</span></li>
+					</ul>
+					</div>
+					<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<div>예) 4 &nbsp;0 &nbsp;1 인 경우 &nbsp;4+0+1 = 5</div>
+					</blockquote>
+					<div>&nbsp;</div>
+					<div>이런식으로 <b>하나의 퍼미션</b>을 숫자값으로 변환하면 됩니다..</div>
+					<div>예)&nbsp;<span style="line-height: 1.5;">rwxr-xr-x 이면&nbsp;</span><span style="line-height: 1.5;">rwx &nbsp;r-x &nbsp;r-x 세자리씩 끊고, 4+2+1 &nbsp;| 4+0+1 | 4+0+1 &nbsp;숫자변환 뒤 합산하면 <span style="background-color: rgb(228, 255, 117); color: rgb(0, 0, 0);">&quot;755&quot;</span> 라는 퍼미션값이 나옵니다.</span></div>
+					<div>&nbsp;</div>
+					<div><span style="line-height: 1.5;">그래서 &quot;&nbsp;</span><b>chmod 755 conory.text</b><span style="line-height: 1.5;">&nbsp;&quot; 명령을 실행하면 conory.text 파일이 755에 해당되는 퍼미션으로 변경됩니다.</span></div>
+					<div>그리고 디렉토리도 이 방법으로&nbsp;<span style="line-height: 1.5;">퍼미션을&nbsp;</span><span style="line-height: 1.5;">변경할 수 있습니다.</span></div>
+					<div>&nbsp;</div>
+					<div>디렉토리의 경우 &quot;<span style="color: rgb(0, 0, 0); background-color: rgb(166, 255, 77);">-R</span>&quot; 옵션을 사용하면 하위 디렉토리의 모든 디렉토리및 파일의 퍼미션이 변경됩니다.</div>
+					<div>예) &quot;<span style="line-height: 1.5;">&nbsp;</span><b style="line-height: 1.5;">chmod -R 777 conory</b><span style="line-height: 1.5;">&nbsp;&quot; conory 디렉토리의 하위에 위치한 모든 파일및 디렉토리 퍼미션이 777로 변경됩니다.</span></div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+					<div><span style="font-size: 14px;"><b>3) 소유자 변경하기</b></span></div>
+					<div>파일의 소유자 양도를 해야 될 경우 소유자 변경을 할 수 있습니다.</div>
+					<div>아래 명령으로 손쉽게 변경할 수 있습니다.</div>
+					<div>&nbsp;</div>
+					<div>
+					<blockquote style="margin: 0 0 0 40px; border: none; padding: 0px;">
+					<div><span style="color: rgb(0, 158, 37);">chown [변경할 소유자] [변경할 파일]</span></div>
+					</blockquote>
+					</div>
+					<div>&nbsp;</div>
+					<div>이 명령으로 소유자뿐만 아니라 소유그룹도 변경할 수 있습니다.</div>
+					<div>[변경할 소유자]란에 &quot;<span style="background-color: rgb(147, 52, 216); color: rgb(255, 255, 255);">.그룹이름</span>&quot; 형식으로 입력하면 됩니다. &quot; .conory &quot;</div>
+					<div>예를 들어 conory.text의 소유자를 &quot;conory&quot;로, 소유그룹을 &quot;conory2&quot;로 동시에 변경할 경우 &quot; <b>chown conory.conory2&nbsp;<span style="line-height: 1.5;">conory.text&nbsp;</span></b><span style="line-height: 1.5;">&quot;</span></div>
+					<div>&nbsp;</div>
+					<div>&nbsp;</div>
+
 
 				centos 방화벽 설정
 				7버전 이상 -> firewall 사용

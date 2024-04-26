@@ -38,15 +38,23 @@
 					<li><a href="./db.html">Database</a></li>
 					<li><a href="./git.html">Git</a></li>
 					<li><a href="./network.html">Network</a></li>
-					<li><a href="./sign.html">Sign</a></li>
                 </ol>
             </ul>
 			<hr/>
 
-			<h4><!--SUBJECT--></h4>
-			<ol>
-				<li><!--CONTENTS--></li>
-			</ol>
+            <!--CONTENTS-->
+            <pre>
+                use mysql
+                show databases
+                show tables
+                select user from user
+                CREATE USER 'magiclinehub'@'%' IDENTIFIED BY 'magiclinehub'
+                GRANT ALL PRIVILEGES ON `magiclinehub`.* TO `magiclinehub`@`%`
+                FLUSH PRIVILEGES
+                DROP DATABASE IF EXISTS `magiclinehub`
+                CREATE DATABASE IF NOT EXISTS `magiclinehub`
+
+            </pre>
         </div>
     </body>
 </html>

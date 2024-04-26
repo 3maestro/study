@@ -46,8 +46,102 @@
 			<ol>
 				<li>용어</li>
 				<ul>
-					<li></li>
+					<li>
+						Pod: Kubernetes의 기본 배포 단위이며, 하나 이상의 컨테이너 그룹입니다. </br>
+						일반적으로 관련된 컨테이너들을 함께 그룹화하여 배포하고 관리합니다.
+					</li>
+					<li>
+						Deployment: Pod 및 ReplicaSet을 관리하는 Kubernetes 리소스입니다. </br>
+						배포는 애플리케이션을 배포하고 업데이트할 때 사용됩니다.
+					</li>
+					<li>
+						Service: Pod에 대한 네트워크 엔드포인트를 제공하는 Kubernetes 리소스입니다. </br>
+						Service를 통해 애플리케이션은 클러스터 내부 또는 외부의 다른 애플리케이션과 통신할 수 있습니다.
+					</li>
+					<li>
+						Namespace: Kubernetes 클러스터를 가상적으로 나누는 방법으로, 각 네임스페이스는 고유한 리소스를 가질 수 있도록 합니다. </br>
+						이를 통해 팀별, 프로젝트별로 리소스를 구분하여 관리할 수 있습니다.
+					</li>
+					<li>
+						ReplicaSet: Pod의 복제본을 유지하는 Kubernetes 리소스입니다. </br>
+						ReplicaSet은 Pod의 개수를 지정된 수로 유지하고, 이상이 발생하면 자동으로 복구합니다.
+					</li>
+					<li>
+						Ingress: 클러스터 외부에서 클러스터 내부의 서비스로의 HTTP 및 HTTPS 라우팅을 가능하게 하는 Kubernetes 리소스입니다.</li>
+					<li>
+						ConfigMap: 설정 데이터를 저장하고 Pod에 주입하는 Kubernetes 리소스입니다. </br>
+						애플리케이션 설정, 환경 변수 및 기타 구성 정보를 관리하는 데 사용됩니다.
+					</li>
+					<li>
+						Secret: 암호, 토큰 또는 기타 민감한 데이터와 같은 비공개 정보를 저장하는 Kubernetes 리소스입니다. </br>
+						Secret은 안전하게 저장되고 Pod에 안전하게 전달됩니다.
+					</li>
+					<li>
+						Node: Kubernetes 클러스터의 하나의 서버를 나타내는 물리적 또는 가상의 컴퓨터입니다. 각 노드는 Pod를 실행하고 관리합니다.</li>
+					<li>
+						Master: Kubernetes 클러스터의 제어 평면을 구성하는 서버입니다. 마스터는 클러스터의 상태를 관리하고 Pod의 배포를 지시합니다.</li>
+					<li>
+						Volume: Pod에서 사용되는 데이터를 저장하는 디스크, 네트워크 드라이브 또는 기타 저장소입니다. </br>
+						Volume은 Pod의 컨테이너 간에 데이터를 공유하는 데 사용됩니다.
+					</li>
                 </ul>
+
+				
+
+				<li>TODO</li>
+				<pre>
+					고객이 Kubernetes 클러스터를 프로비저닝, 관리 및 운영할 필요 없이 
+					클라우드 제공 업체가 대신 관리해주는 서비스
+
+					클러스터 프로비저닝: 클라우드 제공 업체는 클러스터를 프로비저닝하고 설정하는 작업을 자동화합니다. 
+					사용자는 몇 가지 간단한 단계를 통해 Kubernetes 클러스터를 생성할 수 있습니다.
+
+					자동 스케일링 및 로드 밸런싱: 관리형 Kubernetes 서비스는 자동 스케일링 및 로드 밸런싱과 같은 기능을 제공하여 애플리케이션의 성능을 최적화하고 가용성을 보장합니다.
+					자동 업데이트 및 보안 패치: 클라우드 제공 업체는 Kubernetes 마스터 및 워커 노드를 자동으로 업데이트하고 보안 패치를 적용하여 클러스터의 안정성을 유지합니다.
+					모니터링 및 로깅: 관리형 Kubernetes 서비스는 클러스터의 상태를 모니터링하고 로그를 수집하여 사용자에게 제공합니다. 
+					이를 통해 애플리케이션의 성능 및 문제를 파악할 수 있습니다.
+					보안 및 인증: 클라우드 제공 업체는 Kubernetes 클러스터의 보안을 강화하고 인증 및 액세스 제어를 관리합니다. 
+					이를 통해 클러스터의 안전성을 보장합니다.
+
+					클라우드 제공 업체의 관리형 Kubernetes 서비스
+					Google Kubernetes Engine(GKE)
+					Amazon Elastic Kubernetes Service(EKS)
+					Microsoft Azure Kubernetes Service(AKS)
+
+					TEST필요..
+					1. HUB에 올려야 minikube에서 deployment가 가능하는가?
+					2. MagicHUB Admin을 끊고 Agent통해 간편로그인이 가능하는가?
+				</pre>
+				<li>명령어</li>
+				<ol type="I">
+					<li>kubectl</li>
+					<ul>
+						<li>$ kubectl expose deployment [deployment-name] --type=LoadBalancer --port=[target-port(use app`s port)]</li>
+						<li>$ kubectl get services : </li>
+						<li>$ minikube service magicline4webnd</li>
+						<li>$ kubectl delete -n [namespace-name] deployment [deployment-name]</li>
+						<li>$ kubectl delete -n [namespace-name] service [service-name]</li>
+					</ul>
+					<li>minikube</li>
+					<ul>
+						<li>$ minikube start --driver=docker --kubernetes-version v1.29.1</li>
+						<li>$ minikube start --kubernetes-version v1.29.1</li>
+						<li>$ minikube stop</li>
+						<li>$ minikube delete</li>
+						<li>$ minikube status</li>
+						<li>$ minikube ip</li>
+						<li>$ minikube ssh</li>
+						<li>$ minikube addons list</li>
+						<li>$ minikube dashboard</li>
+						<li>$ minikube service [service-name]</li>
+						<li>$ </li>
+					</ul>
+				</ol>
+				
+				kubectl expose deployment magicline4webnd --type=NodePort --port=80
+				minikube service magicline4webndService --url
+				
+
             </ol>
         </div>
     </body>
