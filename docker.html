@@ -128,6 +128,8 @@
 					<ul>
 						<li>$ docker login : 도커 허브에 로그인</li>
 						<li>$ docker images : 이미지 목록</li>
+						<li>$ sudo systemctl start docker : docker start</li>
+						<li>$ sudo systemctl enable docker : docker 서비스 등록 -> 서버 부팅시 자동 시작</li>
 						<li>$ docker build -t [image-name]:[tag] [Dockerfile 위치] : 이미지 빌드(생성)</li>
 						<ki>$ docker rmi [image-name]:[tag] : 이미지 삭제 (tag은 tag값이 있을 경우)</ki>
 						<li>$ docker create --name [container-name] [image-name]:[tag] : 컨테이너 생성(latest경우 tag 생략 가능)</li>

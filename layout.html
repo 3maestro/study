@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
 		<meta name="Generator" content="EditPlus®">
 		<meta name="Author" content="">
 		<meta name="Keywords" content="">
@@ -13,18 +13,62 @@
 			pre {white-space:pre-line;}
             ul {padding-left: 20px;}
             ol {padding-left: 20px;}
+
+			html { background-color: #000; } 
+			body {
+				max-width: 100vw;
+				min-height: 100vh;
+				/* max-width: 1450px;
+				min-height: 927px; */
+				background-color: papayawhip; 
+				float: center;
+				margin: 0 auto;
+			}
+
+			#header {
+				background-color: palegoldenrod;
+				color: white;
+				width: 100%;
+				/* 
+				height: 20%; */
+			}
+			#nav {
+				background-color: lightskyblue;
+				color: white;
+				width: 10%;
+				/* 
+				height: 500px; */
+				float: left;
+			}
+			#section {
+				background-color: lightgreen;
+				color: white;
+				width: 90%;
+				height: 500px;
+				float: left;
+			}
+			#footer {
+				background-color: plum;
+				color: white;
+				width: 100%;
+				/*
+				height: 100px; */
+				clear: both;
+			}
 		</style>
 	</head>
 	<body>
-		<div style="padding: 20px;">
+		<div id="header">
 			<h3>먼저 본질을 이해하고 시작하자.</h3>
 			<p>
 				새로운 기술을 다룰 때 중요한 것은 그 본질을 제대로 파악하는 것이다. 
 				표면적인 노하우만을 습득하는 것만으로는 다양한 환경에서 응용하기 어렵고, 기억할 것들이 너무 많아져 금방 잃어 버리게 된다. 
 				또한 이런 단순한 지식들은 새로운 기술이 등장해 버리면 금방 사라지고 그 가치를 잃어버리는 경우가 많다.
 			</p>
-			<hr/>
-            <ul>
+		</div>
+
+		<div id="nav">
+			<ul>
                 <li>목록</li>
                 <ol>
                     <li><a href="./index.html">Home</a></li>
@@ -37,16 +81,25 @@
 					<li><a href="./was.html">Was</a></li>
 					<li><a href="./db.html">Database</a></li>
 					<li><a href="./git.html">Git</a></li>
+					<li><a href="./jenkins.html">Jenkins</a></li>
 					<li><a href="./network.html">Network</a></li>
 					<li><a href="./sign.html">Sign</a></li>
                 </ol>
             </ul>
-			<hr/>
+		</div>
 
-			<h4><!--SUBJECT--></h4>
-			<ol>
-				<li><!--CONTENTS--></li>
-			</ol>
-        </div>
+		<div id="section">
+			<div id="contents">
+				<!-- contents start -->
+
+				<!-- contents end -->
+			</div>
+		</div>
+
+		<div id="footer">
+			<div style="position:fixed;bottom:20px;right:20px;">
+				<a href="#header">TOP</a>
+			</div>
+		</div>
     </body>
 </html>
