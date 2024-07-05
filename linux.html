@@ -269,6 +269,17 @@
 				특정디렉토리 검색
 				find / -type d -name "tomcat"
 				
+				사용중인 포트 조회 
+				netstat -lntp 
+				사용중인 특정 포트 조회
+				netstat -lntp | grep [포트번호]
+				확인된 PID로 실행중인 프로세스 확인
+				ps -ef
+				확인된 특정PID로 실행중인 프로세스 확인
+				ps -ef | grep [PID]
+				확인되 PID로 프로세스 강제 종료
+				kill -9 [PID]
+
 			</pre>
 
 			<ul>

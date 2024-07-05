@@ -1,5 +1,7 @@
 
-
+$(document).ready(function(){
+    console.log("===========ready===========");
+})
 var config = {
     t : v => {
         console.log("t fun start!!!");
@@ -17,5 +19,24 @@ var config = {
         },
         vl : "123"
     },
+    
+    api:""
 
 }
+
+var api = function() {
+    var _callback="";
+    function testFun(a,b,_callback){
+        _callback = _callback;
+        console.log("testFun call ....");
+        console.log(a);
+        console.log(b);
+    }
+
+    return {
+        testFun : testFun
+
+    }
+}
+
+config.api = new api();

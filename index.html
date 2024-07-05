@@ -15,6 +15,9 @@
             ol {padding-left: 20px;}
 		</style>
 
+		<script type="text/javascript" src="./js/common/jquery-1.10.2.js"></script>
+		<script type="text/javascript" src="./js/common/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="./js/common/jquery.blockUI.js"></script>
 		<script src="./js/zte.js"></script>
 		<script>
 			window.onload = function() {
@@ -25,12 +28,22 @@
 				var result = config.val.obj.total
 				console.log(config.val.obj.total);
 				console.log(result * temp);
+
+
+				config.api.testFun(a,b,_callback);
+
+				var a = 1; 
+				var b = "abc";
+			}
+
+			function _callback(){
+				console.log("callback !!!");
 			}
 		</script>
 	</head>
 	<body>
 		<div style="padding: 20px;">
-			<header id="#header">
+			<header id="header">
 				
 				<h3>먼저 본질을 이해하고 시작하자.</h3>
 				<p>
@@ -55,20 +68,85 @@
 						<li><a href="./jenkins.html">Jenkins</a></li>
 						<li><a href="./network.html">Network</a></li>
 						<li><a href="./sign.html">Sign</a></li>
+						<li><a href="./test.html">Test</a></li>
 					</ol>
 				</ul>
+
+				<hr/>
 			</header>
 
-			<hr/>
 
 			<contents>
-
 				<h4>TODO 정리필요</h4>
 				<h4>드림시큐리티 솔루션</h4>
 				<ol>
+					<li>업무 프로세스(일부 프로세스 순서는 상관없음)</li>
+					<ol type="A">
+						<li>프로젝트 작업 요청 수령</li>
+						<li>프로젝트 관리 추가</li>
+						<ul>
+							<li>Works -> [중앙연구소] 프로젝트 관리 -> 등록 -> 내용입력 -> 진행하기 (ERP의 작업수행상세 참고)</li>
+						</ul>
+						<li>문서 발송</li>
+						<ul>
+							<li>설치시스템문의서 발송</li>
+							<li>JAVA, WAS, 방화벽 작업 안내</li>
+							<li>패키지 설치 위치 전달 받기(필요시)</li>
+						</ul>
+						<li>확인 전화</li>
+						<ul>
+							<li>설치시스템문의서 설명</li>
+							<li>사전작업 요청</li>
+						</ul>
+						<li>설치시스템문의서 수신</li>
+						<li>임시라이선스 발급신청</li>
+						<ul>
+							<li>ERP -> 라이선스발급관리 -> 임시라이선스 발급</li>
+							<li>Jcaos.lic / MagicJs 라이선스 발급요청</li>
+						</ul>
+						<li>내부 테스트</li>
+						<ul>
+							<li>설치시스템문의서 기반 구축 테스트</li>
+							<li>임시라이선스 적용하여 테스트</li>
+							<li>테스트 완료된 패키지 배포 파일로 만들기</li>
+						</ul>
+						<li>패키지 전달</li>
+						<ul>
+							<li>패키지 설치 경로 확인</li>
+							<li>패키지 및 설치메뉴얼 발송</li>
+							<li>전달 드린 설치메뉴얼로 설치 안내 (필요시)</li>
+						</ul>
+						<li>설치 일정 조율</li>
+						<ul>
+							<li>원격 지원 또는 직출</li>
+							<li>설치는 운용 및 개발 환경에서 작동하도록 셋팅</li>
+						</ul>
+						<li>설치확인서 전달</li>
+						<ul>
+							<li>설치 과정 및 테스트 결과 스크린샷</li>
+							<li>설치확인서 문서 작성 후 전달</li>
+							<li>필요시 패키지 CD 만들어 전달</li>
+						</ul>
+						<li>비용 정산여부 확인</li>
+						<ul>
+							<li>비용 정산에 관한 이메일 수신</li>
+						</ul>
+						<li>정식 라이선스 요청</li>
+						<ul>
+							<li>ERP -> 라이선스발급관리 -> 정식라이선스 발급</li>
+							<li>Jcaos.lic / MagicJs 라이선스 발급요청</li>
+							<li>Magic js는 도메인으로 발급 요청</li>
+							<li>jcaos는 ip로 발급 요청</li>
+						</ul>
+						<li>적용 후 정식 라이선스로 테스트</li>
+						<ul>
+							<li>운영 서버에 배포된 솔루션에 적용</li>
+							<li>정상 작동 여부 확인</li>
+						</ul>
+					</ol>
 					<li>MagicLine4Web</li>
-					<ol type="I">
-						<li>설명</li>
+					<ol type="A">
+						<li>설명</li>						
 						<li>개발환경</li>
 						<!-- <li>ERROR CASE</li>
 						<ol type="A">
@@ -97,13 +175,13 @@
 						<li>명령어</li>
 					</ol>
 					<li>MagicMRS</li>
-					<ol type="I">
+					<ol type="A">
 						<li>설명</li>
 						<li>개발환경</li>
 						<li>설치방법</li>
 					</ol>
 					<li>MagicXMLSecurity</li>
-					<ol type="I">
+					<ol type="A">
 						<li>설명</li>
 						<li>개발환경</li>
 						<li>설치방법</li>
@@ -179,29 +257,35 @@
 					-p 44983:22 : 개방 포트 설정. 외부에서 44983 포트로 접근하면 컨테이너의 22번 포트로 연결 (ssh 포트: 22). 변경, 생략 가능.
 	
 					centos:centos7 : 컨테이너의 베이스 이미지 이름. 다른 리눅스 이미지를 원할 경우 교체. 
-				</pre>
 
-				<pre>
-					당나귀			황소짐꾼		황소인간
+					TODO 정리 필요
+					솔루션 에러 케이스
+					<
+					- error 내용
+					Access to XMLHttpRequest at 'https://127.0.0.1:42235/' from origin 'http://211.34.229.233:8080' 
+					has been blocked by CORS policy: The request client is not a secure context and the resource is in more-private address space `local`.
 
-					백호			정글살쾡이		황소인간
-					바다거북이		육지거북		티아메트
-					꼬마산적	 	큰칼도적		황소인간
+					- 증상
+					magicline4nx_setup.exe 자동 설치 안됨
 
-					도둑고양이		몽구스			수색병
-					구렁이			쌍두사			티아메트
+					- solution 
+					크롬/엣지에 해당
+					chrome://flags/#block-insecure-private-network-requests
+					-> Block insecure private network requests.
+					-> Disabled 선택
+					>
 
-					총수마적		쌍칼도적		수색병
-					족제비			뱅골여우		수색병
 
-					사마귀			딱정벌레		티아메트
+					기술지원협약서 무상지원 1년 
+					정식라이선스는 기한이 없다 -> 해당 ip에 한함 
+					사업지원종료(검수 완료일) 기준 1년 기술지원 
 
 				</pre>
 			</contents>
 		</div>
 		<footer>
 			<div style="position:fixed;bottom:20px;right:20px;">
-				<a href="header">TOP</a>
+				<a href="#header">TOP</a>
 			</div>
 		</footer>
 	</body>
